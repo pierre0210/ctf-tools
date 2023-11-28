@@ -1,5 +1,5 @@
 ARG VERSION
-FROM ubuntu:${VERSION}}
+FROM ubuntu:${VERSION}
 
 ENV LANG en_US.UTF-8
 ENV LANGUAGE en_US:en
