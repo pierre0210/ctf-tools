@@ -1,12 +1,15 @@
 ARG VERSION
-ARG PS1
+ARG PS1_SCRIPT
 FROM ubuntu:${VERSION}
 
 ENV LANG en_US.UTF-8
 ENV LANGUAGE en_US:en
-ENV PS1 ${PS1}
 
-RUN apt-get update && apt-get install gcc gdb curl vim -y
+RUN echo "export PS1='\n\[\e[36m\]\w\n\[\e[m\]\[\e[90m\][\u]>\[\e[0m\] '" >> ~/.bashrc
+
+RUN apt-get update && apt-get install locales && locale-gen en_US.UTF-8 && dpkg-reconfigure locales
+
+RUN apt-get install gcc gdb curl vim -y
 RUN bash -c "$(curl -fsSL https://gef.blah.cat/sh)"
 
 RUN apt-get install tmux git -y
