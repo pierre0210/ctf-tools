@@ -13,6 +13,7 @@ RUN apt-get install tmux git -y
 RUN apt-get install python3 python3-pip python3-dev git libssl-dev libffi-dev build-essential -y
 RUN python3 -m pip install --upgrade pip
 RUN python3 -m pip install pwntools
+RUN python3 -m pip install ROPgadget
 RUN python3 -m pip install z3-solver
 
 RUN apt-get install netcat -y
