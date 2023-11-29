@@ -1,9 +1,10 @@
 ARG VERSION
+ARG PS1
 FROM ubuntu:${VERSION}
 
 ENV LANG en_US.UTF-8
 ENV LANGUAGE en_US:en
-ENV LC_ALL en_US.UTF-8
+ENV PS1 ${PS1}
 
 RUN apt-get update && apt-get install gcc gdb curl vim -y
 RUN bash -c "$(curl -fsSL https://gef.blah.cat/sh)"
