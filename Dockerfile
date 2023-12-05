@@ -6,6 +6,7 @@ RUN echo "export PS1='\n\[\e[36m\]\w\n\[\e[m\]\[\e[90m\][\u]>\[\e[0m\] '" >> ~/.
 
 RUN apt-get update && apt-get install locales && sed -i '/en_US.UTF-8/s/^# //g' /etc/locale.gen && locale-gen
 
+ENV DEBIAN_FRONTEND noninteractive
 ENV LANG en_US.UTF-8 
 ENV LANGUAGE en_US:en 
 ENV LC_ALL en_US.UTF-8
