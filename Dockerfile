@@ -20,9 +20,7 @@ RUN python3 -m pip install z3-solver
 RUN apt-get install gcc gdb curl vim -y
 RUN bash -c "$(curl -fsSL https://gef.blah.cat/sh)"
 
-RUN apt-get install tmux git file -y
-
-RUN apt-get install netcat -y
+RUN apt-get install tmux git file netcat ltrace strace -y
 
 RUN apt-get install qemu-efi qemu-user -y
 RUN apt-get install libc6-armhf-cross libc6-arm64-cross gdb-multiarch qemu-system-arm -y
