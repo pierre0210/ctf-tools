@@ -4,8 +4,12 @@
 
 ```bash
 docker build -t ctf-tools --build-arg VERSION=22.04 .
-docker run --privileged --rm -it -v $(pwd):/workspace ctf-tools
-docker run --privileged --rm -it -v ${pwd}:/workspace ctf-tools
+
+# linux
+docker run --privileged --rm -it -v $(pwd):/workspace ctf-tools bash
+
+# windows
+docker run --privileged --rm -it -v ${pwd}:/workspace ctf-tools bash
 ```
 
 ### PS1 prompt example
