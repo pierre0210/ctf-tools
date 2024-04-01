@@ -9,6 +9,7 @@ ENV DEBIAN_FRONTEND noninteractive
 ENV LANG en_US.UTF-8
 ENV LANGUAGE en_US:en
 ENV LC_ALL en_US.UTF-8
+ENV TERM xterm-256color
 
 RUN apt-get install python3 python3-pip python3-dev git libssl-dev libffi-dev build-essential -y
 RUN python3 -m pip install --upgrade pip
