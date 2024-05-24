@@ -1,2 +1,2 @@
-export PROMPT='%F{#af0000}%~%f
+export PROMPT='%F{#c43b3b}%~%f
 %F{#585858}[%f%F{#5f87af}%n%f%F{#585858}]>%f '
