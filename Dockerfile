@@ -12,9 +12,7 @@ ENV LC_ALL en_US.UTF-8
 
 RUN apt-get install python3 python3-pip python3-dev git libssl-dev libffi-dev build-essential -y
 RUN python3 -m pip install --upgrade pip
-RUN python3 -m pip install pwntools
-RUN python3 -m pip install ROPgadget
-RUN python3 -m pip install z3-solver
+RUN python3 -m pip install pwntools ROPgadget z3-solver
 
 RUN apt-get install gcc gdb curl vim -y
 RUN sh -c "$(curl -fsSL https://gef.blah.cat/sh)"
@@ -31,7 +29,5 @@ FROM builder
 
 COPY PROMPT /tmp/
 RUN cat /tmp/PROMPT >> ~/.zshrc
-
-RUN mkdir /workspace
 
 WORKDIR /workspace
