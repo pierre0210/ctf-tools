@@ -11,8 +11,6 @@ ENV LANGUAGE=en_US:en
 ENV LC_ALL=en_US.UTF-8
 
 RUN apt-get install python3 python3-pip python3-dev git libssl-dev libffi-dev build-essential -y
-RUN python3 -m pip install --upgrade pip
-RUN python3 -m pip install pwntools ROPgadget z3-solver
 
 RUN apt-get install gcc gdb curl vim -y
 RUN sh -c "$(curl -fsSL https://gef.blah.cat/sh)"
@@ -21,9 +19,10 @@ RUN apt-get install tmux git file netcat ltrace strace -y
 ENV TERM xterm-256color
 RUN echo "set -g mouse on" >> ~/.tmux.conf
 
-RUN apt-get install qemu-efi qemu-user -y
-RUN apt-get install libc6-armhf-cross libc6-arm64-cross gdb-multiarch qemu-system-arm -y
-RUN python3 -m pip install qiling
+RUN dpkg --add-architecture i386 
+RUN apt-get install libc6:i386 zlib1g:i386 qemu-efi qemu-user libc6-armhf-cross libc6-arm64-cross gdb-multiarch qemu-system-arm -y
+RUN python3 -m pip install --upgrade pip
+RUN python3 -m pip install pwntools ROPgadget z3-solver qiling
 
 FROM builder
 
