@@ -1,5 +1,7 @@
 # ctf-tools
 
+> default os: Debian
+
 ## languages
 
 - C/C++
@@ -38,7 +40,7 @@
 ## build & run
 
 ```bash
-docker build -t ctf-tools --build-arg VERSION=22.04 .
+docker build -t ctf-tools --build-arg VERSION=12 .
 
 # linux
 docker run --rm -it -v $(pwd):/workspace ctf-tools zsh
