@@ -1,13 +1,12 @@
 ARG VERSION
-FROM debian:${VERSION} AS builder
+FROM debian:${VERSION}
 
 RUN apt-get update && \
-    apt-get install zsh -y && \
-    chsh -s $(which zsh)
+    apt-get install zsh locales -y && \
+    chsh -s $(which zsh) && \
+    echo "en_US.UTF-8 UTF-8" >> /etc/locale.gen && \
+    locale-gen en_US.UTF-8
 
-ENV DEBIAN_FRONTEND=noninteractive
-ENV LANG=en_US.UTF-8
-ENV LANGUAGE=en_US:en
 ENV LC_ALL=en_US.UTF-8
 
 RUN apt-get install python3 python3-pip python3-dev git libssl-dev libffi-dev build-essential gcc gdb curl vim -y && \
@@ -23,8 +22,6 @@ RUN dpkg --add-architecture i386 && \
     libc6-armhf-cross libc6-arm64-cross gdb-multiarch qemu-system-arm python3-pip -y && \
     python3 -m pip config set global.break-system-packages true && \
     python3 -m pip install pwntools ROPgadget z3-solver qiling
-
-FROM builder
 
 COPY PROMPT /tmp/
 RUN cat /tmp/PROMPT >> ~/.zshrc
